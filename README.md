@@ -22,6 +22,7 @@ This project contains two main components:
 
 ### Prerequisites
 - Node.js and npm installed for the webhook server.
+- Cloudflare account and Wrangler CLI installed for deployment.
 - Python and necessary libraries installed for the mBot script.
 - mBot robot with the necessary sensors.
 - Telegram bot token and chat ID for sending messages.
@@ -40,9 +41,14 @@ This project contains two main components:
     npm install
     ```
 
-3. Start the server:
+3. Develop locally using Wrangler:
     ```sh
-    npm start
+    wrangler dev
+    ```
+
+4. Deploy the server using Wrangler:
+    ```sh
+    wrangler deploy
     ```
 
 ### IoT Script for mBot
@@ -56,13 +62,13 @@ This project contains two main components:
 
 3. Replace the Wi-Fi credentials and webhook URL in `mbot.py` with your actual details.
 
-4. Deploy the script to your mBot.
+4. Use mBlock to load the `mbot.py` script onto your mBot.
 
 ## Usage
 
 ### Webhook Server
 
-After starting the server, you can access the root endpoint at `http://localhost:3000` to see a greeting message. The server listens for POST requests on `/webhook` to forward messages to a Telegram chat.
+After deploying the server, it will be accessible at the URL provided by Cloudflare. The server listens for POST requests on `/webhook` to forward messages to a Telegram chat. The root endpoint can be accessed to see a greeting message.
 
 ### IoT Script for mBot
 
